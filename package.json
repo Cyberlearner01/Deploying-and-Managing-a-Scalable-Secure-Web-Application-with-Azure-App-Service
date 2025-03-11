@@ -1,0 +1,21 @@
+{
+  "name": "deploying-and-managing-a-scalable-secure-web-application-with-azure-app-service",
+  "version": "1.0.0",
+  "description": "In this project, I will deploy and manage a web application using Azure App Service, incorporating advanced features such as custom domains, SSL/TLS, monitoring, and disaster recovery. This project demonstrates my ability to go beyond basic deployment and showcase skills in scalability, security, and automation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cyberlearner01/Deploying-and-Managing-a-Scalable-Secure-Web-Application-with-Azure-App-Service.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Cyberlearner01/Deploying-and-Managing-a-Scalable-Secure-Web-Application-with-Azure-App-Service/issues"
+  },
+  "homepage": "https://github.com/Cyberlearner01/Deploying-and-Managing-a-Scalable-Secure-Web-Application-with-Azure-App-Service#readme"
+}
