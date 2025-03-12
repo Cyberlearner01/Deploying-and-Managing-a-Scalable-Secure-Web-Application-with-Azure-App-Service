@@ -1,1 +1,2 @@
-.terraform/
+# Ignore the .gitignore file in the terraform folder
+terraform/.gitignore
