@@ -2,3 +2,5 @@
 terraform/.gitignore
 *.tfstate
 *.tfstate.*
+# Ignore node_modules directory
+node_modules/
