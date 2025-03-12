@@ -1,6 +1,18 @@
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "= 4.22.0"
+    }
+  }
+}
+
 provider "azurerm" {
   features {}
+  subscription_id = "d07e93af-325f-4672-a73b-124502a553dc"
 }
+
+
 
 resource "azurerm_resource_group" "project-1" {
   name     = "Project-rg"
@@ -73,4 +85,21 @@ resource "azurerm_app_service_source_control" "webapp_source_control" {
   repo_url               = "https://github.com/Cyberlearner01/Deploying-and-Managing-a-Scalable-Secure-Web-Application-with-Azure-App-Service.git"
   branch                 = "main"
   use_manual_integration = false
+}
+
+
+resource "azurerm_app_service_custom_hostname_binding" "custom_domain" {
+  hostname            = "www.durojohnson.com" # Ensure this is your actual domain
+  app_service_name    = azurerm_linux_web_app.webapp.name
+  resource_group_name = azurerm_resource_group.project-1.name # Ensure correct variable name
+}
+
+resource "azurerm_app_service_managed_certificate" "ssl" {
+  custom_hostname_binding_id = azurerm_app_service_custom_hostname_binding.custom_domain.id
+}
+
+resource "azurerm_app_service_certificate_binding" "ssl_binding" {
+  hostname_binding_id = azurerm_app_service_custom_hostname_binding.custom_domain.id
+  certificate_id      = azurerm_app_service_managed_certificate.ssl.id
+  ssl_state           = "SniEnabled"
 }
