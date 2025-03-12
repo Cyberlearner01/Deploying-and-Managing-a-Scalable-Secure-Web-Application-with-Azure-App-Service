@@ -1,3 +1,38 @@
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Ignore Terraform provider plugins
 .terraform/
-.terraform/
-.terraform/
+.terraform.lock.hcl
+
+# Ignore local Terraform configuration files
+terraform.tfvars
+*.tfvars
+*.tfvars.json
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
+
+# Ignore IDE-specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Ignore local override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore log files
+*.log
+
+# Ignore plan files
+*.tfplan
+
+# Ignore environment-specific files
+.env
+*.env
