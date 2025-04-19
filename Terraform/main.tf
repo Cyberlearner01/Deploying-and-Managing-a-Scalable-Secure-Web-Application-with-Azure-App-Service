@@ -159,7 +159,7 @@ resource "azurerm_monitor_autoscale_setting" "webscale-rg" {
 }
 
 resource "azurerm_storage_account" "jaykxrstore" {
-  name                     = "jaykxrstore"  # Globally unique name
+  name                     = "jaykxrstore"
   resource_group_name      = azurerm_resource_group.project-1.name
   location                 = azurerm_resource_group.project-1.location
   account_tier             = "Standard"
