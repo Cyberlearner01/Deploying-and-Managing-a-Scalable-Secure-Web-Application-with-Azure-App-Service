@@ -17,7 +17,6 @@ resource "azurerm_resource_group" "project-1" {
   location = "Canada Central"
 }
 
-# Add the service plan resource
 resource "azurerm_service_plan" "app_plan" {
   name                = "Johnson-plan"
   resource_group_name = azurerm_resource_group.project-1.name
@@ -99,7 +98,6 @@ resource "azurerm_app_service_certificate_binding" "ssl_binding" {
   ssl_state           = "SniEnabled"
 }
 
-# Adding the auto-scaling setting
 resource "azurerm_monitor_autoscale_setting" "webscale-rg" {
   enabled             = true
   location            = "canadacentral"
@@ -160,8 +158,6 @@ resource "azurerm_monitor_autoscale_setting" "webscale-rg" {
   }
 }
 
-
-# 1. Create a Storage Account for Logs and Backups
 resource "azurerm_storage_account" "jaykxrstore" {
   name                     = "jaykxrstore"  # Globally unique name
   resource_group_name      = azurerm_resource_group.project-1.name
@@ -170,7 +166,6 @@ resource "azurerm_storage_account" "jaykxrstore" {
   account_replication_type = "LRS"
 }
 
-# 2. Create a Log Analytics Workspace
 resource "azurerm_log_analytics_workspace" "webapp_log_analytics" {
   name                = "webapp-log-analytics"
   resource_group_name = azurerm_resource_group.project-1.name
@@ -179,7 +174,6 @@ resource "azurerm_log_analytics_workspace" "webapp_log_analytics" {
   retention_in_days   = 30
 }
 
-# 3. Create Application Insights
 resource "azurerm_application_insights" "webapp_insights" {
   name                = "webapp-insights"
   location            = azurerm_resource_group.project-1.location
@@ -187,7 +181,6 @@ resource "azurerm_application_insights" "webapp_insights" {
   application_type    = "web"
 }
 
-# 4. Create a Backup Vault and Backup Policy
 resource "azurerm_recovery_services_vault" "webapp_backup_vault" {
   name                = "webapp-backup-vault"
   resource_group_name = azurerm_resource_group.project-1.name
@@ -202,10 +195,10 @@ resource "azurerm_backup_policy_vm" "daily_backup_policy" {
 
   backup {
     frequency = "Daily"
-    time      = "23:00"  # Backup time (adjust as needed)
+    time      = "23:00"
   }
 
   retention_daily {
-    count = 30  # Retention period in days
+    count = 30
   }
 }
